@@ -6,15 +6,17 @@ function recurse(nodes, arreg){
 		new_arra = arreg.slice(0);
 		var childre = nodes[i].childNodes;
 			if(childre.length<=2){
-			new_arra.push(childre[1].getAttribute('href'));
-			console.log(new_arra);
+			new_arra.push(childre[1].text);
+			console.log(childre[1].getAttribute('href')+":"+new_arra);
+			//new_arra.reverse();
+			///new_arra.push(childre[1].getAttribute('href'));
+			//console.log("{"+childre[1].getAttribute('href')+ ':'+ new_arra+"}");
 			}
 			else{
-				new_arra.push(childre[1].getAttribute('href'));
-				//console.log(childre[2].childNodes)
-				//new_arra = arreg.slice(0);
-				console.log(new_arra);
-				recurse(childre[2].childNodes,new_arra);
+				new_arra.push(childre[1].text);
+			console.log(childre[1].getAttribute('href')+":"+new_arra);
+			//console.log(new_arra);
+			recurse(childre[2].childNodes,new_arra);
 			}
 		}
 	}
@@ -22,9 +24,10 @@ function recurse(nodes, arreg){
 for (var i = 0 ; i<hijos.length;i++)
 {
 	var nombre = hijos[i].childNodes[1].getAttribute('href');
+	var nombretexto = hijos[i].childNodes[1].text;
 	var hijo_sub = hijos[i].childNodes[2].childNodes;
-	console.log(nombre);
+	console.log(nombre+":"+nombretexto);
 	var arreglo =[];
-	arreglo.push(nombre);
+	arreglo.push(nombretexto);
 	recurse(hijo_sub,arreglo);
 }
